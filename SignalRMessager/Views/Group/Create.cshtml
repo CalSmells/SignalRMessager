@@ -1,0 +1,45 @@
+﻿@model SignalRMessager.Models.Member
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Group</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="DM" class="form-control" />
+                @if (@Model.DM)
+                {
+                    <input asp-for="GroupName" type="hidden" class="form-control" value="GroupNameHere" />
+                }
+                else if (!@Model.DM)
+                {
+                    <label asp-for="GroupName" class="control-label"></label>
+                    <input asp-for="GroupName" class="form-control" value="GroupNameHere" />
+                    <br />
+                }
+                <label asp-for="UserId" class="control-label col-sm-4">Add User</label>
+                <select asp-for="UserId" class="form-control dropdown" asp-items="@Model.Users" id="UId">
+                    <option value="default">Pick one</option>
+                </select>
+                <input type="hidden" asp-for="@Model.Users" />
+                <span asp-validation-for="GroupName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" asp-route-model="@Model" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

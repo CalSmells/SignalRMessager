@@ -1,0 +1,52 @@
+﻿@model List<SignalRMessager.Models.Manage>
+
+@{
+    ViewData["Title"] = "ManageUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ManageUsers</h2>
+
+<p>
+    <a asp-controller="Group" asp-action="Group" asp-route-id="@ViewBag.GroupId">Back to Chat</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Users
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    @user.User.UserName
+                </td>
+                <td id="@(user.User.Id)add">                
+                    @if (!user.InGroup)
+                    {<button onclick="add('@user.User.Id', '@user.User.UserName');">Add</button>}
+                    else { <b id="@(user.User.Id)addB">Nope</b> }
+                </td>
+                <td id="@(user.User.Id)remove">
+                    @if (user.InGroup)
+                    {<button onclick="remove('@user.User.Id', '@user.User.UserName');">Remove</button>}
+                    else { <b id="@(user.User.Id)remB">Nope</b> }
+                </td>
+          </tr>
+        }
+    </tbody>
+</table>
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/js/connect.js"></script>
+<script src="~/js/manageUserA.js"></script>
+<script src="~/js/layoutA.js"></script>
+<script>
+    const groupId = '@ViewBag.groupId';
+</script>

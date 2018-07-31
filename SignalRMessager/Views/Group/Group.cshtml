@@ -1,0 +1,106 @@
+﻿@model SignalRMessager.Models.GroupView
+
+@{
+    ViewData["Title"] = "Group";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/groupA.css" />
+
+<h2>
+    @if (Model.DM)
+    {
+        @Html.DisplayFor(Model => Model.OtherUserName);
+    }
+    else if(!Model.DM)
+    {
+        @Html.DisplayFor(Model => Model.GroupName);
+    }
+</h2>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <hr />
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-6" align="center">&nbsp;</div>
+            <div class="col-6">
+                <ul class="col-xs-6 col-lg-4 col-xs-push-1 text-left" id="extMessagesList">
+                    @foreach (var item in Model.Messages)
+                    {
+                        if (item.UserId != Model.CurrentUser.Id)
+                        {
+                            <li>@Html.DisplayFor(modelItem => item.Body)</li>
+                        }
+                        else
+                        {
+                            <li><br /></li>
+                        }
+                    }
+                </ul>
+                <ul class="col-xs-6 col-lg-4 col-xs-push-1 text-right" id="intMessagesList">
+                    @foreach (var item in Model.Messages)
+                    {
+                        if (item.UserId == Model.CurrentUser.Id)
+                        {
+                            <li>@Html.DisplayFor(modelItem => item.Body)</li>
+                        }
+                        else
+                        {
+                            <li><br /></li>
+                        }
+                    }
+                </ul>
+                <hr class="col-xs-12"/>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="sidenav col-sm-6">
+                <div></div>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li>&emsp;<u><a asp-action="Details" asp-route-id="@Model.GroupId">Details</a></u></li>
+                    <li>&emsp;<u><a asp-action="Edit" asp-route-id="@Model.GroupId">Edit</a></u></li>
+                    @if (!Model.DM)
+                    {
+                        <li>&emsp;<u><a asp-controller="GroupUsers" asp-action="Index" asp-route-id="@Model.GroupId" asp-route-dm="@Model.DM">Manage Members</a></u></li>
+                    }
+                    @foreach (var user in Model.Users)
+                    {
+                        if (user.Active == true)
+                        {<li id="@user.Id"><span class="dot" id="online"></span> @Html.DisplayFor(modeluser => user.UserName)</li>}
+                        else if(user.Active == false)
+                        {<li id="@user.Id"><span class="dot" id="offline"></span> @Html.DisplayFor(modeluser => user.UserName)</li>}
+
+                    }
+                </ul>
+            </div>
+            <div class="navbar navbar-default navbar-fixed-bottom">
+                <div class="container">
+                    <form autocomplete="off">
+                        <input asp-for="@Model.CurrentUser.Id" type="hidden" id="userId" />
+                        <input asp-for="@Model.CurrentUser.UserName" type="hidden" id="userName" />
+                        <br />
+                        <input type="text" id="messageInput" required="required"/>
+                        <input type="submit" onclick="sendMessage();" value="Send Message" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/js/connect.js"></script>
+<script src="~/js/groupF.js"></script>
+<script>
+    const gId = @Model.GroupId;
+    window.onload = function () {
+        scroll(0);
+        setTimeout(function () { userOnline() }, 200)
+    };
+    window.onbeforeunload = function () { userOffline() };
+</script>

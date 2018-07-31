@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SignalRMessager.Models.Group>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><hr /><hr /></li>
+        <li class="dropdown">
+            <button class="dropdown-toggle" data-toggle="dropdown" href="#">Create New</button>
+            <ul class="dropdown-menu">
+                <li><a asp-controller="Group" asp-action="Create" asp-route-dm="false">Group</a></li>
+                <li><a asp-controller="Group" asp-action="Create" asp-route-dm="true">Contact</a></li>
+            </ul>
+        </li>
+        <li><hr /></li>
+    </ul>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Groups
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (!item.DM)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GroupName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.GroupId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.GroupId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.GroupId">Delete</a> |
+                        <a asp-action="Group" asp-route-id="@item.GroupId">Group</a> |
+                        <a asp-controller="GroupUsers" asp-route-id="@item.GroupId" asp-route-dm="@item.DM">Manage</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+    <thead>
+        <tr>
+            <th>
+                Direct Messages
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.DM)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GroupName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.GroupId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.GroupId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.GroupId">Delete</a> |
+                        <a asp-action="Group" asp-route-id="@item.GroupId">Group</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/js/connect.js"></script>
