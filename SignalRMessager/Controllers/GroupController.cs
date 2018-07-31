@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.SignalR; 
 using Microsoft.EntityFrameworkCore;
 using SignalRMessager.Models;
 
@@ -73,69 +73,69 @@ namespace SignalRMessager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpGet("/Group/AddUser/{groupId}/{dm}")]
-        public async Task<IActionResult> AddUser(int groupId, bool dm)
-        {
-            if (!dm)
-            {
-                Member member = new Member
-                {
-                    Users = new SelectList(_context.User, "Id", "UserName"),
-                    GroupId = groupId
-                };
+        //[HttpGet("/Group/AddUser/{groupId}/{dm}")]
+        //public async Task<IActionResult> AddUser(int groupId, bool dm)
+        //{
+        //    if (!dm)
+        //    {
+        //        Member member = new Member
+        //        {
+        //            Users = new SelectList(_context.User, "Id", "UserName"),
+        //            GroupId = groupId
+        //        };
 
-                var nerd = await _userManager.GetUserAsync(User);
-                ViewBag.Id = nerd.Id;
-                return View(member);
-            }
-            return RedirectToAction(nameof(Index));
-        }
+        //        var nerd = await _userManager.GetUserAsync(User);
+        //        ViewBag.Id = nerd.Id;
+        //        return View(member);
+        //    }
+        //    return RedirectToAction(nameof(Index));
+        //}
 
 
-        [HttpPost]
-        public async Task<IActionResult> AddUser(Member member)
-        {
-            if (member.UserId != "default")
-            {
-                //find user
-                var user = await _context.User.Include(u => u.GroupUsers).ThenInclude(gu => gu.Group).FirstOrDefaultAsync(u => u.Id == member.UserId);
-                bool nerd = true;
-                foreach (var gu in user.GroupUsers)
-                {
-                    if (gu.GroupId == member.GroupId)
-                    {
-                        nerd = false;
-                        break;
-                    }
-                }
-                if (nerd)
-                {
-                    //find group
-                    var group = await _context.Group.Include(u => u.GroupUsers).ThenInclude(gu => gu.User).Include(g => g.Messages).FirstOrDefaultAsync(g => g.GroupId == member.GroupId);
+        //[HttpPost]
+        //public async Task<IActionResult> AddUser(Member member)
+        //{
+        //    if (member.UserId != "default")
+        //    {
+        //        //find user
+        //        var user = await _context.User.Include(u => u.GroupUsers).ThenInclude(gu => gu.Group).FirstOrDefaultAsync(u => u.Id == member.UserId);
+        //        bool nerd = true;
+        //        foreach (var gu in user.GroupUsers)
+        //        {
+        //            if (gu.GroupId == member.GroupId)
+        //            {
+        //                nerd = false;
+        //                break;
+        //            }
+        //        }
+        //        if (nerd)
+        //        {
+        //            //find group
+        //            var group = await _context.Group.Include(u => u.GroupUsers).ThenInclude(gu => gu.User).Include(g => g.Messages).FirstOrDefaultAsync(g => g.GroupId == member.GroupId);
 
-                    //add stuff
-                    GroupUser groupUser = new GroupUser
-                    {
-                        User = user,
-                        UserId = user.Id,
-                        Group = group,
-                        GroupId = group.GroupId,
-                        DM = member.DM
-                    };
+        //            //add stuff
+        //            GroupUser groupUser = new GroupUser
+        //            {
+        //                User = user,
+        //                UserId = user.Id,
+        //                Group = group,
+        //                GroupId = group.GroupId,
+        //                DM = member.DM
+        //            };
 
-                    //Create Entrance Message
-                    Message message = new Message { UserId = user.Id, Body = $"{user.UserName} has joined the group" };
-                    group.Messages.Add(message);
-                    await _ChatHubContext.Clients.Groups(group.GroupName).SendAsync("Refresh");
+        //            //Create Entrance Message
+        //            Message message = new Message { UserId = user.Id, Body = $"{user.UserName} has joined the group" };
+        //            group.Messages.Add(message);
+        //            await _ChatHubContext.Clients.Groups(group.GroupName).SendAsync("Refresh");
 
-                    //update the stuff
-                    _context.Add(groupUser);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction("Index", "Group");
-                }
-            }
-            return RedirectToAction(nameof(AddUser));
-        }
+        //            //update the stuff
+        //            _context.Add(groupUser);
+        //            await _context.SaveChangesAsync();
+        //            return RedirectToAction("Index", "Group");
+        //        }
+        //    }
+        //    return RedirectToAction(nameof(AddUser));
+        //}
 
 
 
@@ -186,18 +186,14 @@ namespace SignalRMessager.Controllers
             {
                 var otherUser = await _context.User.Include(u => u.GroupUsers).FirstOrDefaultAsync( u => u.Id == member.UserId);
                 var user = await _userManager.GetUserAsync(User);
-                
-                if (member.DM && otherUser.GroupUsers.Any(gu => gu.DM == member.DM && gu.UserId == otherUser.Id))
+
+                if (otherUser.Id == user.Id || member.UserId == "default" || (member.DM && otherUser.GroupUsers.Any(gu => gu.DM == member.DM && gu.UserId == otherUser.Id)))
                 {
                     return RedirectToAction(nameof(Create));
                 }
                 if (member.GroupName == "GroupNameHere" && member.UserId !="default")
                 {
                     member.GroupName = $"{otherUser.UserName} - {user.UserName}";
-                }
-                else if (member.UserId == "default")
-                {
-                    return View(member);
                 }
                 
                 var group = new Group

@@ -12249,11 +12249,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\callumm2\\source\\repos\\SignalRMessager\\SignalRMessager\\SignalRMessager.csproj",
+      "projectUniqueName": "C:\\Users\\callumm2\\Desktop\\gitstuff\\SignalRMessager\\SignalRMessager.csproj",
       "projectName": "SignalRMessager",
-      "projectPath": "C:\\Users\\callumm2\\source\\repos\\SignalRMessager\\SignalRMessager\\SignalRMessager.csproj",
+      "projectPath": "C:\\Users\\callumm2\\Desktop\\gitstuff\\SignalRMessager\\SignalRMessager.csproj",
       "packagesPath": "C:\\Users\\callumm2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\callumm2\\source\\repos\\SignalRMessager\\SignalRMessager\\obj\\",
+      "outputPath": "C:\\Users\\callumm2\\Desktop\\gitstuff\\SignalRMessager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
