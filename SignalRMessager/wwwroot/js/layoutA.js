@@ -20,3 +20,15 @@
         gList.appendChild(li);
     }
 });
+function getGroup(DM, list, search) {
+    if (list == "searchList") {
+        DM = DMDropDown.value;
+        search = searchInput.value;
+    }
+    if (DM === "true") {
+        connection.invoke("GetContacts", currentUserId, list, search);
+    }
+    else {
+        connection.invoke("GetGroups", currentUserId, list, search);
+    }
+}

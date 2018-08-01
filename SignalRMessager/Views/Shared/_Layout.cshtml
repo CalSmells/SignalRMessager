@@ -87,7 +87,7 @@
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
     </environment>
-    <script src="~/js/layout.js"></script>
+    <script src="~/js/layoutA.js"></script>
     <script>
         var searchList = document.getElementById("searchList");
         var searchInput = document.getElementById("searchInput");
@@ -95,16 +95,7 @@
         var currentUserId = '@ViewBag.Id';
 
         function getGroups(DM, list, search) {
-            if (list == "searchList") {
-                DM = DMDropDown.value;
-            }
-            search = searchInput.value;
-            if (DM) {
-                connection.invoke("GetContacts", currentUserId, list, search);
-            }
-            else {
-                connection.invoke("GetGroups", currentUserId, list, search);
-            }
+            getGroup(DM, list, search);
         }
     </script>
     @RenderSection("Scripts", required: false)
