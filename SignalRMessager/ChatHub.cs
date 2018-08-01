@@ -58,35 +58,6 @@ namespace SignalRMessager
         }
 
 
-        //public async Task GetContacts(string userId, string list, string search)
-        //{
-        //    var user = await _context.User.Include(u => u.GroupUsers).ThenInclude(gu => gu.Group).FirstOrDefaultAsync(u => u.Id == userId);
-        //    var groupUsers = await _context.GroupUser.Include(gu => gu.Group).ThenInclude(g => g.GroupUsers).Include(gu => gu.User).Where(gu => gu.UserId == userId && gu.DM).ToListAsync();
-
-        //    List<GetGroup> getGroups = new List<GetGroup>();
-        //    List<GroupUser> groupUses = new List<GroupUser>();
-        //    foreach (var groupUser in groupUsers)
-        //    {
-        //        foreach (var gu in groupUser.Group.GroupUsers)
-        //        {
-        //            if (gu.User.UserName.Contains(search) && gu.User.UserName != user.UserName)
-        //            {
-        //                groupUses.Add(gu);
-        //            }
-        //        }
-
-        //        //GroupUser gerpUser = await _context.GroupUser.FirstOrDefaultAsync(gu => gu.GroupId == groupUser.GroupId && gu.User.UserName != user.UserName && gu.User.UserName.Contains(search));
-        //    }
-        //    foreach (var groupUser in groupUses)
-        //    {
-
-        //        GetGroup getGroup = new GetGroup { GroupId = groupUser.GroupId, Name = groupUser.User.UserName };
-        //        getGroups.Add(getGroup);
-        //    }
-        //    await Clients.Caller.SendAsync("GetGroups", getGroups.OrderBy(g => g.Name), list);
-        //}
-
-
         public async Task GetContacts(string userId, string list, string search)
         {
             var user = await _context.User.Include(u => u.GroupUsers).FirstOrDefaultAsync(u => u.Id == userId);
