@@ -16,5 +16,6 @@ namespace SignalRMessager.Models
 
         //Group Relation
         public int GroupId { get; set; }
+        public Group Group { get; set; }
     }
 }

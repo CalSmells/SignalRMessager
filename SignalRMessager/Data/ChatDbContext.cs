@@ -25,6 +25,10 @@ namespace SignalRMessager.Models
                 .HasMany(u => u.GroupUsers);
             modelBuilder.Entity<GroupUser>()
                 .HasKey(gu => new {gu.GroupId, gu.UserId });
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.User);
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Group);
         }
 
         public DbSet<SignalRMessager.Models.Group> Group { get; set; }

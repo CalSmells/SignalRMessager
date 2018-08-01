@@ -5,13 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" href="~/css/groupIndexA.css" />
+
 <h2>Index</h2>
 
 <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
         <li><hr /><hr /></li>
         <li class="dropdown">
-            <button class="dropdown-toggle" data-toggle="dropdown" href="#">Create New</button>
+            <button class="dropdown-toggle btn" data-toggle="dropdown" href="#">Create New</button>
             <ul class="dropdown-menu">
                 <li><a asp-controller="Group" asp-action="Create" asp-route-dm="false">Group</a></li>
                 <li><a asp-controller="Group" asp-action="Create" asp-route-dm="true">Contact</a></li>
@@ -20,8 +22,8 @@
         <li><hr /></li>
     </ul>
 </div>
-<table class="table">
-    <thead>
+<table class="table table-hover table-responsive">
+    <thead class="thead-light">
         <tr>
             <th>
                 Groups
@@ -49,11 +51,9 @@
             }
         }
     </tbody>
-    <thead>
+    <thead class="thead-light">
         <tr>
-            <th>
-                Direct Messages
-            </th>
+            <th>Direct Messages</th>
             <th></th>
         </tr>
     </thead>

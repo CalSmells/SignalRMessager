@@ -44,7 +44,7 @@
                     </li>
                     <li class="dropdown">
                         <br />
-                        <select id="groupType">
+                        <select id="groupType" class="btn-dark">
                             <option value="true">Contacts</option>
                             <option value="false">Groups</option>
                         </select>
@@ -52,8 +52,8 @@
                     <li>
                         <ul><br /></ul>
                         <form>
-                            <input type="text" value="" id="searchInput" />
-                            <input type="submit" class="dropdown-toggle" data-toggle="dropdown" href="#" onclick="getGroups(true, 'searchList', '');" />
+                            <input type="text" value="" id="searchInput" class="btn" cursor="text"/>
+                            <input type="submit" class="dropdown-toggle btn" data-toggle="dropdown" href="#" onclick="getGroups(true, 'searchList', '');" />
                             <ul class="dropdown-menu" id="searchList"></ul>
                         </form>
                     </li>
@@ -99,7 +99,12 @@
                 DM = DMDropDown.value;
             }
             search = searchInput.value;
-            connection.invoke("GetGroups", currentUserId, DM, list, search);
+            if (DM) {
+                connection.invoke("GetContacts", currentUserId, list, search);
+            }
+            else {
+                connection.invoke("GetGroups", currentUserId, list, search);
+            }
         }
     </script>
     @RenderSection("Scripts", required: false)

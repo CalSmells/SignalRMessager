@@ -12,7 +12,6 @@ namespace SignalRMessager
     public class ChatHub : Hub
     {
         private readonly ChatDbContext _context;
-        private bool all;
 
         public ChatHub(ChatDbContext context)
         {
@@ -59,25 +58,67 @@ namespace SignalRMessager
         }
 
 
+        //public async Task GetContacts(string userId, string list, string search)
+        //{
+        //    var user = await _context.User.Include(u => u.GroupUsers).ThenInclude(gu => gu.Group).FirstOrDefaultAsync(u => u.Id == userId);
+        //    var groupUsers = await _context.GroupUser.Include(gu => gu.Group).ThenInclude(g => g.GroupUsers).Include(gu => gu.User).Where(gu => gu.UserId == userId && gu.DM).ToListAsync();
+
+        //    List<GetGroup> getGroups = new List<GetGroup>();
+        //    List<GroupUser> groupUses = new List<GroupUser>();
+        //    foreach (var groupUser in groupUsers)
+        //    {
+        //        foreach (var gu in groupUser.Group.GroupUsers)
+        //        {
+        //            if (gu.User.UserName.Contains(search) && gu.User.UserName != user.UserName)
+        //            {
+        //                groupUses.Add(gu);
+        //            }
+        //        }
+
+        //        //GroupUser gerpUser = await _context.GroupUser.FirstOrDefaultAsync(gu => gu.GroupId == groupUser.GroupId && gu.User.UserName != user.UserName && gu.User.UserName.Contains(search));
+        //    }
+        //    foreach (var groupUser in groupUses)
+        //    {
+
+        //        GetGroup getGroup = new GetGroup { GroupId = groupUser.GroupId, Name = groupUser.User.UserName };
+        //        getGroups.Add(getGroup);
+        //    }
+        //    await Clients.Caller.SendAsync("GetGroups", getGroups.OrderBy(g => g.Name), list);
+        //}
+
+
+        public async Task GetContacts(string userId, string list, string search)
+        {
+            var user = await _context.User.Include(u => u.GroupUsers).FirstOrDefaultAsync(u => u.Id == userId);
+            
+            List<GetGroup> getGroups = new List<GetGroup>();
+            foreach (var gu in user.GroupUsers)
+            {
+                if (gu.DM)
+                {
+                    var ogu = await _context.GroupUser.Include(g => g.User).FirstOrDefaultAsync(g => g.GroupId == gu.GroupId && g.UserId != user.Id && g.User.UserName.Contains(search));
+                    if (ogu != null)
+                    {
+                        GetGroup getGroup = new GetGroup { GroupId = ogu.GroupId, Name = ogu.User.UserName };
+                        getGroups.Add(getGroup);
+                    }
+                }
+            }
+            await Clients.Caller.SendAsync("GetGroups", getGroups.OrderBy(g => g.Name), list);
+        }
 
 
 
-
-
-        public async Task GetGroups(string userId, bool DM, string list, string search)
+        public async Task GetGroups(string userId, string list, string search)
         {
             var user = await _context.User.Include(u => u.GroupUsers).ThenInclude(gu => gu.Group).FirstOrDefaultAsync(u => u.Id == userId);
-            var groupUsers = await _context.GroupUser.Where(gu => gu.UserId == userId && gu.Group.GroupName.Contains(search) && gu.DM == DM).ToListAsync();
+            var groupUsers = await _context.GroupUser.Where(gu => gu.UserId == userId && gu.Group.GroupName.Contains(search) && gu.DM == false).ToListAsync();
+
 
             List<GetGroup> getGroups = new List<GetGroup>();
             foreach (var groupUser in groupUsers)
             {
                 GetGroup getGroup = new GetGroup { GroupId = groupUser.GroupId, Name = groupUser.Group.GroupName };
-                if (groupUser.DM)
-                {
-                    var gerpUser = await _context.GroupUser.Include(gu => gu.User).FirstOrDefaultAsync(gu => gu.GroupId == groupUser.GroupId && gu.UserId != userId);
-                    getGroup.Name = gerpUser.User.UserName;
-                }
                 getGroups.Add(getGroup);
             }
             await Clients.Caller.SendAsync("GetGroups", getGroups.OrderBy(g => g.Name), list);

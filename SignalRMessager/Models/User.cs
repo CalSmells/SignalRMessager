@@ -11,5 +11,7 @@ namespace SignalRMessager.Models
     {
         //Group Relation
         public List<GroupUser> GroupUsers { get; set; }
+        //Message Relation
+        public List<Message> Messages { get; set; }
     }
 }
