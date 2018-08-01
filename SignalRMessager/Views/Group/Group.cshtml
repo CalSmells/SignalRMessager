@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link rel="stylesheet" href="~/css/group.css" />
+<link rel="stylesheet" href="~/css/groupA.css" />
 
 <h2>
     @if (Model.DM)
@@ -85,8 +85,8 @@
                         <input asp-for="@Model.CurrentUser.Id" type="hidden" id="userId" />
                         <input asp-for="@Model.CurrentUser.UserName" type="hidden" id="userName" />
                         <br />
-                        <input type="text" id="messageInput" required="required"/>
-                        <input type="submit" onclick="sendMessage();" value="Send Message" />
+                        <input type="text" id="messageInput" class="form-control col-md-2 col-md-push-3" style="width:40%;" required="required"/>
+                        <input type="submit" onclick="sendMessage();" class="btn btn-default col-sm-2 col-md-push-3" value="Send Message" />
                     </form>
                 </div>
             </div>
@@ -94,8 +94,8 @@
     </div>
 </body>
 <script src="~/lib/signalr/signalr.js"></script>
-<script src="~/js/connectE.js"></script>
-<script src="~/js/group.js"></script>
+<script src="~/js/connectA.js"></script>
+<script src="~/js/groupA.js"></script>
 <script>
     const gId = @Model.GroupId;
     window.onload = function () {

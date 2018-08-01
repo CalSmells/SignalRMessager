@@ -7,7 +7,7 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/siteA.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -42,18 +42,16 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">MyContacts</a>
                         <ul class="dropdown-menu" id="contactList"></ul>
                     </li>
-                    <li class="dropdown">
-                        <br />
-                        <select id="groupType" class="btn-dark">
-                            <option value="true">Contacts</option>
-                            <option value="false">Groups</option>
+                    <li class="dropdown form-group form-inline" style="padding-top:8px;">
+                        <select id="groupType" class="form-control form-inline form-group-sm list-group contact-dropdown">
+                            <option class="list-group-item contact-dropdown-item" value="true">Contacts</option>
+                            <option class="list-group-item contact-dropdown-item" value="false">Groups</option>
                         </select>
                     </li>
                     <li>
-                        <ul><br /></ul>
-                        <form>
-                            <input type="text" value="" id="searchInput" class="btn" cursor="text"/>
-                            <input type="submit" class="dropdown-toggle btn" data-toggle="dropdown" href="#" onclick="getGroups(true, 'searchList', '');" />
+                        <form class="form-group form-inline form-group-sm" style="padding-top:8px;">
+                            <input type="text" value="" id="searchInput" class="form-control form-control-sm" style="cursor:text;"/>
+                            <input type="submit" value="Search" style="background-color: #222222; color:#ffffff;" class="dropdown-toggle btn" data-toggle="dropdown" href="#" onclick="getGroups(true, 'searchList', '');" />
                             <ul class="dropdown-menu" id="searchList"></ul>
                         </form>
                     </li>
@@ -71,7 +69,7 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/siteA.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"

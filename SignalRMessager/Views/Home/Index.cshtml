@@ -23,19 +23,19 @@
         </div>
         <div class="row">&nbsp;</div>
         <div class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container">
-                <form autocomplete="off">
+            <div class="container" style="padding-bottom:10px;">
+                <form autocomplete="off" class="form-group form-inline">
                     <br />
-                    <input type="text" id="messageInput" />
-                    <input type="submit" onclick="sendMessage();" value="Send Message" />
+                    <input type="text" id="messageInput" class="form-control col-md-2 col-md-push-3" style="width:40%;"/>
+                    <input type="submit" onclick="sendMessage();" class="btn btn-default col-sm-2 col-md-push-3" value="Send Message" />
                 </form>
             </div>
         </div>
     </div>
 </div>
 <script src="~/lib/signalr/signalr.js"></script>
-<script src="~/js/connectE.js"></script>
-<script src="~/js/general.js"></script>
+<script src="~/js/connectA.js"></script>
+<script src="~/js/generalA.js"></script>
 <script>
     const uName = "@Model.UserName";
     const uId = "@Model.Id";

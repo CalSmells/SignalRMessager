@@ -21,14 +21,14 @@
     }
 });
 function getGroup(DM, list, search) {
-    if (list == "searchList") {
-        DM = DMDropDown.value;
+    if (list === "searchList") {
+        DM = Boolean(DMDropDown.value === "true");
         search = searchInput.value;
     }
-    if (DM === "true") {
-        connection.invoke("GetContacts", currentUserId, list, search);
-    }
-    else {
+    if(!DM) {
         connection.invoke("GetGroups", currentUserId, list, search);
+    }
+    if (DM) {
+        connection.invoke("GetContacts", currentUserId, list, search);
     }
 }

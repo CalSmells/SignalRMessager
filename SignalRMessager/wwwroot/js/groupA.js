@@ -2,7 +2,6 @@
 const uName = document.getElementById("userName").value;
 
 function sendMessage() {
-    console.log("tryna send");
     const msg = document.getElementById("messageInput").value;
     document.getElementById("messageInput").value = "";
     connection.invoke("SendMessage", gId, uId, uName, msg).catch(err => console.error(err.toString()));
@@ -42,7 +41,6 @@ connection.on("ReceiveExternalMessage", (user, msg) => {
     li.textContent = encodedMsg;
     document.getElementById("extMessagesList").appendChild(li);
     document.getElementById("intMessagesList").appendChild(br);
-    console.log("external");
     scroll(0);
 });
 connection.on("ReceiveInternalMessage", (msg) => { //"internal" inaccurate naming
@@ -51,7 +49,6 @@ connection.on("ReceiveInternalMessage", (msg) => { //"internal" inaccurate namin
     li.textContent = msg;
     document.getElementById("intMessagesList").appendChild(li);
     document.getElementById("extMessagesList").appendChild(br);
-    console.log("internal");
     console.log(msg);
     scroll(0);
 });

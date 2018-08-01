@@ -13,7 +13,6 @@ connection.on("ReceiveExternalGeneral", (user, msg) => {
     li.textContent = encodedMsg;
     document.getElementById("extMessagesList").appendChild(li);
     document.getElementById("intMessagesList").appendChild(br);
-    console.log("external");
 });
 connection.on("ReceiveInternalGeneral", (msg) => { //"internal" inaccurate naming
     const li = document.createElement("li");
@@ -21,6 +20,5 @@ connection.on("ReceiveInternalGeneral", (msg) => { //"internal" inaccurate namin
     li.textContent = msg;
     document.getElementById("intMessagesList").appendChild(li);
     document.getElementById("extMessagesList").appendChild(br);
-    console.log("internal");
     console.log(msg);
 });
