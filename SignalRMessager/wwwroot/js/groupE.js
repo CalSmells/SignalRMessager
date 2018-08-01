@@ -34,22 +34,12 @@ function userOffline() {
     connection.invoke("UserOffline", gId, uId).catch (err => console.error(err.toString()));
 }
 
-connection.on("ReceiveExternalMessage", (user, msg) => {
-    const encodedMsg = user + ": " + msg;
+
+connection.on("ReceiveMessage", (msg, int) => { //"internal" inaccurate naming
     const li = document.createElement("li");
-    const br = document.createElement("br");
-    li.textContent = encodedMsg;
-    document.getElementById("extMessagesList").appendChild(li);
-    document.getElementById("intMessagesList").appendChild(br);
-    scroll(0);
-});
-connection.on("ReceiveInternalMessage", (msg) => { //"internal" inaccurate naming
-    const li = document.createElement("li");
-    const br = document.createElement("br");
     li.textContent = msg;
-    document.getElementById("intMessagesList").appendChild(li);
-    document.getElementById("extMessagesList").appendChild(br);
-    console.log(msg);
+    li.setAttribute("class", `well well-sm well-${int}`);
+    document.getElementById("messagesList").appendChild(li);
     scroll(0);
 });
 

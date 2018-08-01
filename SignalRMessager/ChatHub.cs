@@ -26,8 +26,9 @@ namespace SignalRMessager
             await _context.AddAsync<Message>(message);
             await _context.SaveChangesAsync();
 
-            await Clients.GroupExcept(group.GroupName, Context.ConnectionId).SendAsync("ReceiveExternalMessage", userName, msg);
-            await Clients.Caller.SendAsync("ReceiveInternalMessage", msg);
+            var extMsg = $"{userName}: {msg}";
+            await Clients.Caller.SendAsync("ReceiveMessage", msg, "int");
+            await Clients.GroupExcept(group.GroupName, Context.ConnectionId).SendAsync("ReceiveMessage", extMsg, "ext");
         }
 
         public async Task SendGeneral(string userId, string userName, string msg)

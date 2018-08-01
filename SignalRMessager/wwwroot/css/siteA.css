@@ -49,3 +49,8 @@ body {
 .contact-dropdown-item {
     color: #000000;
 }
+
+.well {
+    padding-bottom:1px !important;
+    padding-top:1px !important;
+}

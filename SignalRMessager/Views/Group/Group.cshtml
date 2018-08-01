@@ -7,6 +7,19 @@
 
 <link rel="stylesheet" href="~/css/groupA.css" />
 
+<style>
+    .well-ext {
+        background-color: #062a44; /*062a44*/
+        color: #d3d3d3;
+        text-align: left;
+    }
+    .well-int {
+        color: #062a44; /*062a44*/
+        background-color: #d3d3d3;
+        text-align:right;
+    }
+</style>
+
 <h2>
     @if (Model.DM)
     {
@@ -28,29 +41,16 @@
         <div class="container">
             <div class="col-6" align="center">&nbsp;</div>
             <div class="col-6">
-                <ul class="col-xs-6 col-lg-4 col-xs-push-1 text-left" id="extMessagesList">
+                <ul class="col-xs-12 col-lg-8 col-xs-push-1 text-left" id="messagesList">
                     @foreach (var item in Model.Messages)
                     {
                         if (item.UserId != Model.CurrentUser.Id)
                         {
-                            <li>@Html.DisplayFor(modelItem => item.Body)</li>
+                            <li class="well well-sm well-ext">@Html.DisplayFor(modelItem => item.Body)</li>
                         }
                         else
                         {
-                            <li><br /></li>
-                        }
-                    }
-                </ul>
-                <ul class="col-xs-6 col-lg-4 col-xs-push-1 text-right" id="intMessagesList">
-                    @foreach (var item in Model.Messages)
-                    {
-                        if (item.UserId == Model.CurrentUser.Id)
-                        {
-                            <li>@Html.DisplayFor(modelItem => item.Body)</li>
-                        }
-                        else
-                        {
-                            <li><br /></li>
+                            <li class="well well-sm well-int">@Html.DisplayFor(modelItem => item.Body)</li>
                         }
                     }
                 </ul>
@@ -63,18 +63,24 @@
                     <li></li>
                     <li></li>
                     <li></li>
-                    <li>&emsp;<u><a asp-action="Details" asp-route-id="@Model.GroupId">Details</a></u></li>
-                    <li>&emsp;<u><a asp-action="Edit" asp-route-id="@Model.GroupId">Edit</a></u></li>
-                    @if (!Model.DM)
-                    {
-                        <li>&emsp;<u><a asp-controller="GroupUsers" asp-action="Index" asp-route-id="@Model.GroupId" asp-route-dm="@Model.DM">Manage Members</a></u></li>
-                    }
+                    <li></li>
+                    <li></li>
+                    <li class="btn-group-vertical" style="width:60%">
+                        <a asp-action="Details" class="btn btn-default btn-block" asp-route-id="@Model.GroupId">Details</a>
+                        <a asp-action="Edit" class="btn btn-default btn-block" asp-route-id="@Model.GroupId">Edit</a>
+                        @if (!Model.DM)
+                        {
+                            <a asp-controller="GroupUsers" class="btn btn-default btn-block" asp-action="Index" asp-route-id="@Model.GroupId" asp-route-dm="@Model.DM">Manage Members</a>
+                        }
+                    </li>
                     @foreach (var user in Model.Users)
                     {
                         if (user.Active == true)
-                        {<li id="@user.Id"><span class="dot" id="online"></span> @Html.DisplayFor(modeluser => user.UserName)</li>}
-                        else if(user.Active == false)
-                        {<li id="@user.Id"><span class="dot" id="offline"></span> @Html.DisplayFor(modeluser => user.UserName)</li>}
+                        {
+                            <li id="@user.Id"><span class="dot" id="online"></span> @Html.DisplayFor(modeluser => user.UserName)</li>}
+                        else if (user.Active == false)
+                        {
+                            <li id="@user.Id"><span class="dot" id="offline"></span> @Html.DisplayFor(modeluser => user.UserName)</li>}
 
                     }
                 </ul>
@@ -85,7 +91,7 @@
                         <input asp-for="@Model.CurrentUser.Id" type="hidden" id="userId" />
                         <input asp-for="@Model.CurrentUser.UserName" type="hidden" id="userName" />
                         <br />
-                        <input type="text" id="messageInput" class="form-control col-md-2 col-md-push-3" style="width:40%;" required="required"/>
+                        <input type="text" id="messageInput" class="form-control col-md-2 col-md-push-3" style="width:40%;" required/>
                         <input type="submit" onclick="sendMessage();" class="btn btn-default col-sm-2 col-md-push-3" value="Send Message" />
                     </form>
                 </div>
@@ -95,7 +101,7 @@
 </body>
 <script src="~/lib/signalr/signalr.js"></script>
 <script src="~/js/connectA.js"></script>
-<script src="~/js/groupA.js"></script>
+<script src="~/js/groupE.js"></script>
 <script>
     const gId = @Model.GroupId;
     window.onload = function () {

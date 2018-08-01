@@ -77,7 +77,7 @@ using SignalRMessager.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(142, 54, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f3a2116a382d43d5b275c17cf8a9c181", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a87a4974fdfc4240a779d0a3b83b1cfc", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -106,7 +106,7 @@ using SignalRMessager.Models;
                 <li>");
             EndContext();
             BeginContext(514, 76, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d5717953383f4836ac8b412aea8d6c4f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5474f425aa2f474980e0ea370b1494fd", async() => {
                 BeginContext(581, 5, true);
                 WriteLiteral("Group");
                 EndContext();
@@ -136,7 +136,7 @@ using SignalRMessager.Models;
             WriteLiteral("</li>\r\n                <li>");
             EndContext();
             BeginContext(617, 77, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8dbd50c2353e4e99afcd72f4c8fe9584", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7080e59f85b44ca6af37ad6c799f1603", async() => {
                 BeginContext(683, 7, true);
                 WriteLiteral("Contact");
                 EndContext();
@@ -203,7 +203,7 @@ using SignalRMessager.Models;
             WriteLiteral("\r\n                    </td>\r\n                    <td>\r\n                        ");
             EndContext();
             BeginContext(1291, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "30374fa1823d4c21b010a82888c8d0d0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6509745fe933435e89b5b3dfb816e3d6", async() => {
                 BeginContext(1341, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -238,7 +238,7 @@ using SignalRMessager.Models;
             WriteLiteral(" |\r\n                        ");
             EndContext();
             BeginContext(1377, 64, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7f330726bb044ce682fd0408d663b9e3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7ed58f5f1fba4e44a36d9f7ae34ba40d", async() => {
                 BeginContext(1430, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -273,7 +273,7 @@ using SignalRMessager.Models;
             WriteLiteral(" |\r\n                        ");
             EndContext();
             BeginContext(1469, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "27037adb48884aa496c09866680cae3f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67e27d2b6d10474cae116b5f1f69ad8e", async() => {
                 BeginContext(1521, 6, true);
                 WriteLiteral("Delete");
                 EndContext();
@@ -308,7 +308,7 @@ using SignalRMessager.Models;
             WriteLiteral(" |\r\n                        ");
             EndContext();
             BeginContext(1559, 60, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b5e607cb1d8b4630ba5a035534bd3aa6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "021738fe92714ae5a2d8b766bbe06ffc", async() => {
                 BeginContext(1610, 5, true);
                 WriteLiteral("Group");
                 EndContext();
@@ -343,7 +343,7 @@ using SignalRMessager.Models;
             WriteLiteral(" |\r\n                        ");
             EndContext();
             BeginContext(1647, 94, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c1d2ea726f654d2688d5fb184daff993", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "54dbb5275ee944d18ba709dceef3a64a", async() => {
                 BeginContext(1731, 6, true);
                 WriteLiteral("Manage");
                 EndContext();
@@ -417,7 +417,7 @@ using SignalRMessager.Models;
             WriteLiteral("\r\n                    </td>\r\n                    <td>\r\n                        ");
             EndContext();
             BeginContext(2269, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39407b3a18c147feb2d1c268dcd0d2de", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d73a7571b7894aae9b6e91dfbb5b1c81", async() => {
                 BeginContext(2319, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -452,7 +452,7 @@ using SignalRMessager.Models;
             WriteLiteral(" |\r\n                        ");
             EndContext();
             BeginContext(2355, 64, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c96ac10c01e944159827bae69f8bf678", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a4808f36801a41e1a78c56557f71aad0", async() => {
                 BeginContext(2408, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -487,7 +487,7 @@ using SignalRMessager.Models;
             WriteLiteral(" |\r\n                        ");
             EndContext();
             BeginContext(2447, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f91bb68a5f154739a6bae113ae531e70", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7ba20bdd677d42b7a86eed28825a628e", async() => {
                 BeginContext(2499, 6, true);
                 WriteLiteral("Delete");
                 EndContext();
@@ -522,7 +522,7 @@ using SignalRMessager.Models;
             WriteLiteral(" |\r\n                        ");
             EndContext();
             BeginContext(2537, 60, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0f07abf958534f3d80dcf0aa69ca4bc0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "37d9475929a04fceae80d5e01008230c", async() => {
                 BeginContext(2588, 5, true);
                 WriteLiteral("Group");
                 EndContext();
@@ -566,7 +566,7 @@ using SignalRMessager.Models;
             WriteLiteral("    </tbody>\r\n</table>\r\n");
             EndContext();
             BeginContext(2699, 48, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c50fac1898924ee9a79ae3e2e1f3e460", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4650e8cd86724067957208c84f1778df", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -584,7 +584,7 @@ using SignalRMessager.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(2749, 40, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7438a1edb4a48f8b1792792eda9647e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5cc707787e9d412fbff95f624d95b69d", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
