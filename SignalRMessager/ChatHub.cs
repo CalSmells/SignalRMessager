@@ -33,8 +33,9 @@ namespace SignalRMessager
 
         public async Task SendGeneral(string userId, string userName, string msg)
         {
-            await Clients.AllExcept(Context.ConnectionId).SendAsync("ReceiveExternalGeneral", userName, msg);
-            await Clients.Caller.SendAsync("ReceiveInternalGeneral", msg);
+            var extMsg = $"{userName}: {msg}";
+            await Clients.AllExcept(Context.ConnectionId).SendAsync("ReceiveGeneral", extMsg, "ext");
+            await Clients.Caller.SendAsync("ReceivegGeneral", msg, "int");
         }
 
 

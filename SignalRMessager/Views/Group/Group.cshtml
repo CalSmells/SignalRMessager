@@ -5,18 +5,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<link rel="stylesheet" href="~/css/groupA.css" />
+<ul class="breadcrumb">
+    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+    <li><a asp-controller="Groups" asp-action="Index">Groups</a></li>
+    <li><a class="active">
+            @if (Model.DM)
+            {
+                @Html.DisplayFor(Model => Model.OtherUserName);
+            }
+            else if (!Model.DM)
+            {
+                @Html.DisplayFor(Model => Model.GroupName);
+            }
+        </a>
+    </li>
+</ul>
 
+<link rel="stylesheet" href="~/css/groupA.css" />
 <style>
     .well-ext {
-        background-color: #062a44; /*062a44*/
+        background-color: #062a44;
         color: #d3d3d3;
         text-align: left;
+        word-wrap: break-word;
+        max-width: 80%;
     }
+
     .well-int {
-        color: #062a44; /*062a44*/
+        color: #062a44;
         background-color: #d3d3d3;
-        text-align:right;
+        text-align: right;
+        word-wrap: break-word;
+        max-width: 80%;
     }
 </style>
 
@@ -54,7 +74,6 @@
                         }
                     }
                 </ul>
-                <hr class="col-xs-12"/>
             </div>
             <div class="row">&nbsp;</div>
             <div class="sidenav col-sm-6">

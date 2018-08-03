@@ -6,8 +6,27 @@
     ul {
         list-style-type: none;
     }
+    .well-ext {
+        background-color: #062a44;
+        color: #d3d3d3;
+        text-align: left;
+        word-wrap: break-word;
+        display: inline-block;
+    }
+
+    .well-int {
+        color: #062a44;
+        background-color: #d3d3d3;
+        text-align: right;
+        word-wrap: break-word;
+    }
 </style>
-<h2>General:</h2>
+
+<div class="panel">
+    <div class="panel-heading">
+        General Chat
+    </div>
+</div>
 
 <div class="container">
     <div class="row">
@@ -18,8 +37,7 @@
     <div class="container">
         <div class="col-6" align="center">&nbsp;</div>
         <div class="col-6">
-            <ul class="col-xs-6 col-lg-4 col-xs-push-1 text-left" id="extMessagesList"></ul>
-            <ul class="col-xs-6 col-lg-4 col-xs-push-1 text-right" id="intMessagesList"></ul>
+            <ul class="col-xs-12 col-lg-8 col-xs-push-1" id="messagesList"></ul>
         </div>
         <div class="row">&nbsp;</div>
         <div class="navbar navbar-default navbar-fixed-bottom">
@@ -28,7 +46,7 @@
                     <br />
                     <span>
                         <input type="text" id="messageInput" class="form-control col-md-2 col-md-push-3" style="width:40%;" />
-                        <input type="submit" onclick="sendMessage();" class="btn btn-default  col-md-2 col-md-push-3" value="Send Message" />
+                        <input type="submit" onclick="sendGeneral();" class="btn btn-default  col-md-2 col-md-push-3" value="Send Message" />
                     </span>
                 </form>
             </div>
@@ -37,7 +55,7 @@
 </div>
 <script src="~/lib/signalr/signalr.js"></script>
 <script src="~/js/connectA.js"></script>
-<script src="~/js/generalA.js"></script>
+<script src="~/js/generalG.js"></script>
 <script>
     const uName = "@Model.UserName";
     const uId = "@Model.Id";

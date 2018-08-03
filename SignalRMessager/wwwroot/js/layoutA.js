@@ -1,6 +1,5 @@
 ﻿connection.on("GetGroups", (groups, list) => {
     var gList = document.getElementById(list);
-    console.log(list);
 
     if (gList.hasChildNodes()) {
         gList.innerHTML = "";
